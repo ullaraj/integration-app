@@ -1,11 +1,9 @@
 package com.ig.integration.app;
 
-import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ig.integration.app.controller.FileResourceController;
 import com.ig.integration.app.domain.BrokerConfig;
 import com.ig.integration.app.domain.Order;
-import com.ig.integration.app.exceptionhandling.FileProcessingException;
 import com.ig.integration.app.util.JsonUtil;
 import org.junit.Assert;
 import org.junit.Before;
@@ -35,7 +33,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)

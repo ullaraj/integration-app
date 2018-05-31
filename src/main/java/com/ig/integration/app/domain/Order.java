@@ -1,12 +1,7 @@
 package com.ig.integration.app.domain;
 
 
-
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
-
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import java.time.LocalDateTime;
 
 @JacksonXmlRootElement
 public class Order {

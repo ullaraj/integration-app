@@ -1,7 +1,5 @@
 package com.ig.integration.app.exceptionhandling;
 
-import org.apache.activemq.ActiveMQConnectionFactory;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.Date;

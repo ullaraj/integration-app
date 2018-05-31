@@ -1,27 +1,24 @@
 package com.ig.integration.app.controller;
 
 
-import com.ig.integration.app.exceptionhandling.BrokerConfigException;
-import com.ig.integration.app.util.JsonUtil;
 import com.ig.integration.app.domain.BrokerConfig;
 import com.ig.integration.app.domain.Order;
+import com.ig.integration.app.exceptionhandling.BrokerConfigException;
 import com.ig.integration.app.exceptionhandling.UploadException;
 import com.ig.integration.app.messaging.MessageProducer;
 import com.ig.integration.app.service.ConfigurationUpdateService;
 import com.ig.integration.app.service.FileProcessorService;
+import com.ig.integration.app.util.JsonUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
-import java.util.Objects;
 
 /**
  * FileController that delegates to the fileprocessing service and

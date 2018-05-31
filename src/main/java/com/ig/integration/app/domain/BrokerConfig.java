@@ -1,6 +1,5 @@
 package com.ig.integration.app.domain;
 
-import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
