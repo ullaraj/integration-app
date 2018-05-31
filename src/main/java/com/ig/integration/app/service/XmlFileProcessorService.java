@@ -52,6 +52,7 @@ public class XmlFileProcessorService implements  FileProcessorService{
         try {
             inputStream =  file.getInputStream();
         } catch (Exception e) {
+            logException(e);
         }
         return inputStream;
     }
