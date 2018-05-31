@@ -83,33 +83,31 @@ public class IntegrationAppApplicationTests {
 
     @Test
     public void testValidFileUload() throws Exception {
-        MultiValueMap<String, Object> bodyMap = createMultiValuedMap("valid-orders.xml");
+        MultiValueMap<String, Object> requestBodyMap = createMultiValuedMap("valid-orders.xml");
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.MULTIPART_FORM_DATA);
-        HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(bodyMap, headers);
-
-        TestRestTemplate restTemplate = new TestRestTemplate();
-        ResponseEntity<String> response = restTemplate.exchange("http://localhost:"+port+"/file/upload",
-                HttpMethod.POST, requestEntity, String.class);
-
+        ResponseEntity<String> response = invokeMultipartFilePostRequest( requestBodyMap);
         String jsonResponse =jsonUtil.convertToJsonMessage(expectedOrders);
 
         Assert.assertEquals("The orders sent across and received in the response must be same ",jsonResponse,response.getBody());
     }
 
-    @Test
-    public void testInValidFileUload() throws Exception {
-        MultiValueMap<String, Object> bodyMap = createMultiValuedMap("invalid-order-file.xml");
+    private  ResponseEntity<String> invokeMultipartFilePostRequest(MultiValueMap<String, Object> requestBodyMap){
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.MULTIPART_FORM_DATA);
-        HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(bodyMap, headers);
+        HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(requestBodyMap, headers);
 
         TestRestTemplate restTemplate = new TestRestTemplate();
         ResponseEntity<String> response = restTemplate.exchange("http://localhost:"+port+"/file/upload",
                 HttpMethod.POST, requestEntity, String.class);
+        return response;
+    }
 
-            response.getBody();
+    @Test
+    public void testInValidFileUload() throws Exception {
+        MultiValueMap<String, Object> requestBodyMap = createMultiValuedMap("invalid-order-file.xml");
+
+        ResponseEntity<String> response =  invokeMultipartFilePostRequest( requestBodyMap);
+
         Assert.assertEquals(HttpStatus.INTERNAL_SERVER_ERROR,response.getStatusCode());
 
     }

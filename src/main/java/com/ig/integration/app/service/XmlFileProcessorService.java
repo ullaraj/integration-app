@@ -35,15 +35,17 @@ public class XmlFileProcessorService implements  FileProcessorService{
     //Skipping the xml tag
     @Override
     public List<Order> getOrders(Stream<String> xmlFileContentStream) {
-        final List<Order> orderStream = xmlFileContentStream.filter(x -> !x.startsWith("<?xml")).map(x -> {
-            Order order = null;
-            try {
-                order = objectMapper.readValue(x, Order.class);
-            } catch (Exception e) {
-                logException(e);
-            }
-            return order;
-        }).collect(Collectors.toList());
+        final List<Order> orderStream = xmlFileContentStream
+                .filter(x -> !x.startsWith("<?xml"))
+                .map(x -> {
+                         Order order = null;
+                           try {
+                                order = objectMapper.readValue(x, Order.class);
+                           } catch (Exception e) {
+                                logException(e);
+                           }
+                         return order;
+                }).collect(Collectors.toList());
         return orderStream;
     }
 
