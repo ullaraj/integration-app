@@ -23,7 +23,7 @@ public class GlobalExceptionHandler  extends ResponseEntityExceptionHandler {
         redirectAttrs.addFlashAttribute("message", e);
         exceptionResponse.setMessage(e.getMessage());
         exceptionResponse.setDetails("Please select a file to upload");
-        return createModelViewResponse(exceptionResponse,VIEW_NAME);
+        return createModelViewResponse(exceptionResponse);
     }
 
     @ExceptionHandler(BrokerConfigException.class)
@@ -31,7 +31,7 @@ public class GlobalExceptionHandler  extends ResponseEntityExceptionHandler {
         redirectAttrs.addFlashAttribute("message", e);
         exceptionResponse.setMessage(e.getMessage());
         exceptionResponse.setDetails("Please ensure all broker config parameters are updated.");
-        return createModelViewResponse(exceptionResponse,VIEW_NAME);
+        return createModelViewResponse(exceptionResponse);
     }
     @ExceptionHandler(FileProcessingException.class)
     public ModelAndView  brokerConfigException(FileProcessingException e, RedirectAttributes redirectAttrs){
@@ -39,10 +39,10 @@ public class GlobalExceptionHandler  extends ResponseEntityExceptionHandler {
         exceptionResponse.setMessage(e.getMessage());
         exceptionResponse.setDetails("Error occured while processing the file .Please upload a valid file.");
 
-        return createModelViewResponse(exceptionResponse,VIEW_NAME);
+        return createModelViewResponse(exceptionResponse);
     }
 
-     private ModelAndView createModelViewResponse(ErrorResponse exceptionResponse,String viewName){
+     private ModelAndView createModelViewResponse(ErrorResponse exceptionResponse){
          ModelAndView modelAndView = new ModelAndView();
          modelAndView.addObject("exceptionResponse",exceptionResponse);
          modelAndView.setViewName("uploadStatus");

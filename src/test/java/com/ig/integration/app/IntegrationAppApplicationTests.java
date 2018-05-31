@@ -41,7 +41,7 @@ import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class IntegrationAppApplicationTests {
 
-    Logger log = LoggerFactory.getLogger(this.getClass().getName());
+    private final Logger log = LoggerFactory.getLogger(this.getClass().getName());
 
     @LocalServerPort
     private int port;
@@ -49,7 +49,7 @@ public class IntegrationAppApplicationTests {
     @Autowired
     FileResourceController fileResourceController;
 
-    List<String> inputList;
+    private List<String> inputList;
 
     @Autowired
     ObjectMapper mapper;
@@ -58,7 +58,7 @@ public class IntegrationAppApplicationTests {
     JsonUtil jsonUtil;
 
 
-    private List<Order> expectedOrders = new ArrayList<>();
+    private final List<Order> expectedOrders = new ArrayList<>();
 
     @Test
     public void contextLoads() {
@@ -97,9 +97,9 @@ public class IntegrationAppApplicationTests {
         HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(requestBodyMap, headers);
 
         TestRestTemplate restTemplate = new TestRestTemplate();
-        ResponseEntity<String> response = restTemplate.exchange("http://localhost:"+port+"/file/upload",
+        return restTemplate.exchange("http://localhost:"+port+"/file/upload",
                 HttpMethod.POST, requestEntity, String.class);
-        return response;
+
     }
 
     @Test

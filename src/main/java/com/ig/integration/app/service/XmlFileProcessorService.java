@@ -18,7 +18,7 @@ import java.util.stream.Stream;
 @Service
 public class XmlFileProcessorService implements  FileProcessorService{
 
-    Logger log = LoggerFactory.getLogger(this.getClass().getName());
+    private final Logger log = LoggerFactory.getLogger(this.getClass().getName());
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -35,7 +35,7 @@ public class XmlFileProcessorService implements  FileProcessorService{
     //Skipping the xml tag
     @Override
     public List<Order> getOrders(Stream<String> xmlFileContentStream) {
-        final List<Order> orderStream = xmlFileContentStream
+        return xmlFileContentStream
                 .filter(x -> !x.startsWith("<?xml"))
                 .map(x -> {
                          Order order = null;
@@ -46,7 +46,7 @@ public class XmlFileProcessorService implements  FileProcessorService{
                            }
                          return order;
                 }).collect(Collectors.toList());
-        return orderStream;
+
     }
 
     private InputStream getInputStream(MultipartFile file){

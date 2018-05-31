@@ -12,9 +12,8 @@ public class XmlJavaMapper {
 
     @Bean()
     @Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
-    public ObjectMapper createObjectMapper(){
-        ObjectMapper mapper = new XmlMapper();
-        return  mapper;
+    public ObjectMapper createObjectMapper() {
+        return new XmlMapper();
     }
 
 }

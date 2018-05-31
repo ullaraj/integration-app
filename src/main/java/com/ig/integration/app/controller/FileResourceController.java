@@ -30,7 +30,7 @@ import java.util.Objects;
 @RestController
 public class FileResourceController implements  ResourceController{
 
-    Logger log = LoggerFactory.getLogger(this.getClass().getName());
+    private final Logger log = LoggerFactory.getLogger(this.getClass().getName());
 
     @Autowired
     private FileProcessorService xmlFileProcessorService;

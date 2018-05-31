@@ -7,7 +7,7 @@ import org.springframework.jms.core.JmsTemplate;
 
 public class MessageProducer {
 
-    Logger log = LoggerFactory.getLogger(this.getClass().getName());
+    private final Logger log = LoggerFactory.getLogger(this.getClass().getName());
 
     @Autowired
     private JmsTemplate jmsTemplate;

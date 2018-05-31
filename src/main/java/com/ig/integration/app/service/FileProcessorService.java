@@ -14,14 +14,11 @@ public interface FileProcessorService {
 
 
     default Stream<String> getFileStream(InputStream inputStream){
-        Stream<String> lines = null;
-        lines = new BufferedReader(new InputStreamReader(inputStream)).lines();
-        return lines;
-
+        return new BufferedReader(new InputStreamReader(inputStream)).lines();
     }
 
      List<Order> process(MultipartFile file);
 
-    List<Order> getOrders(Stream<String> xmlFileStream);
+     List<Order> getOrders(Stream<String> xmlFileStream);
 
 }

@@ -7,7 +7,7 @@ import org.springframework.jms.annotation.JmsListener;
 import java.util.concurrent.CountDownLatch;
 
 public class    MessageConsumer {
-    Logger log = LoggerFactory.getLogger(this.getClass().getName());
+    private final Logger log = LoggerFactory.getLogger(this.getClass().getName());
 
     private CountDownLatch latch = new CountDownLatch(1);
 

@@ -9,5 +9,5 @@ import org.springframework.web.multipart.MultipartFile;
 
 public interface ResourceController {
 
-    public ResponseEntity<String> save(@RequestParam("file") MultipartFile file,@ModelAttribute BrokerConfig brokerConfig) ;
+    ResponseEntity<String> save(@RequestParam("file") MultipartFile file,@ModelAttribute BrokerConfig brokerConfig) ;
 }
