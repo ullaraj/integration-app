@@ -35,6 +35,7 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.concurrent.TimeUnit;
+import com.ig.integration.app.domain.BrokerConfig;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -55,10 +56,13 @@ public class MessagingTests {
 
         @Autowired
         private MessageConsumer receiver;
+		
+		@Autowired
+        private BrokerConfig brokerConfig;
 
         @Test
         public void testReceive() throws Exception {
-            sender.send("helloworld.q", "Hello Spring JMS ActiveMQ!");
+            sender.send(brokerConfig.getDestination(), "Hello Spring JMS ActiveMQ!");
 
             receiver.getLatch().await(10000, TimeUnit.MILLISECONDS);
             assertThat(receiver.getLatch().getCount()).isEqualTo(0);
