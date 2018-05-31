@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<h1>Spring Boot - Upload Status</h1>
+
+<form method="GET" action="" th:object="${exceptionResponse}" >
+    <h4 th:object="${exceptionResponse}" th:text="${exceptionResponse.getMessage()}"/>
+    <h4 th:object="${exceptionResponse}" th:text="${exceptionResponse.getDetails()}"/>
+</form>
+</body>
+</html>
