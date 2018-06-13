@@ -1,4 +1,4 @@
-package com.ig.integration.app.executors;
+package com.ig.integration.app.asynch.executors;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.AsyncConfigurerSupport;

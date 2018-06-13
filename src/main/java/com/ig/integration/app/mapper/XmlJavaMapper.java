@@ -2,6 +2,7 @@ package com.ig.integration.app.mapper;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.ig.integration.app.domain.BrokerConfig;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,5 +16,7 @@ public class XmlJavaMapper {
     public ObjectMapper createObjectMapper() {
         return new XmlMapper();
     }
+
+
 
 }

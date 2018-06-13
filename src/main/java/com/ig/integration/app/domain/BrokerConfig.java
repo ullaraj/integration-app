@@ -1,13 +1,14 @@
 package com.ig.integration.app.domain;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
  * The default Broker configurations are loaded form application.properties.
  */
 @Configuration
-public class BrokerConfig {
+ public class BrokerConfig {
     @Value("${spring.activemq.broker-url}")
     private String brokerUrl;
 
@@ -19,6 +20,16 @@ public class BrokerConfig {
 
     @Value("${spring.activemq.destination}")
     private String destination;
+
+    public BrokerConfig(){
+    }
+
+    public BrokerConfig(String brokerUrl,String brokerUsername,String brokerPassword,String destination){
+        this.brokerUrl= brokerUrl;
+        this.brokerUsername =brokerUsername;
+        this.brokerPassword = brokerPassword;
+        this.destination = destination;
+    }
 
     public String getBrokerUrl() {
         return brokerUrl;
@@ -50,5 +61,10 @@ public class BrokerConfig {
 
     public void setDestination(String destination) {
         this.destination = destination;
+    }
+
+    @Bean
+    public BrokerConfig createBrokerConfig(){
+        return new BrokerConfig(brokerUrl,brokerUsername,brokerPassword,destination);
     }
 }
